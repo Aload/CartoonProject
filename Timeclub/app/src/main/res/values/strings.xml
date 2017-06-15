@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Timeclub</string>
+    <string name="main_text">首页</string>
+    <string name="country_text">外媒</string>
+    <string name="mine_text">我的</string>
+    <string name="attion_new_suser">推荐用户</string>
+    <string name="show_all">显示全部</string>
+</resources>

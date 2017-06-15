@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.autism.timelibs.view.refresh.SpringView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sp_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+        <com.kevin.wraprecyclerview.WrapRecyclerView
+            android:id="@+id/rv_recomment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp" />
+</com.autism.timelibs.view.refresh.SpringView>

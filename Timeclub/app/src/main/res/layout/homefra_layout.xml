@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.autism.timelibs.view.refresh.SpringView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sp_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="ScrollViewSize">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_sort"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/home_attention"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/iv_sort"
+                    android:text="@string/app_name"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_3"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@mipmap/action_next"
+                    android:text="@string/show_all"
+                    tools:ignore="RelativeOverlap,RtlHardcoded" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_view_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_news"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tv_news"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/iv_news"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_3"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@mipmap/action_next"
+                    android:text="@string/show_all"
+                    tools:ignore="RelativeOverlap,RtlHardcoded" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_view_middle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/home_attention"
+                android:padding="10dp"
+                android:text="@string/attion_new_suser"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/size_3"
+                tools:ignore="RtlHardcoded" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_view_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none" />
+        </LinearLayout>
+    </ScrollView>
+</com.autism.timelibs.view.refresh.SpringView>

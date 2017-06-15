@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SpringView">
+        <attr name="type">
+            <enum name="overlap" value="0" />
+            <enum name="follow" value="1" />
+        </attr>
+        <attr name="give">
+            <enum name="both" value="0" />
+            <enum name="top" value="1" />
+            <enum name="bottom" value="2" />
+            <enum name="none" value="3" />
+        </attr>
+        <attr name="header" format="reference" />
+        <attr name="footer" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="FlowIndicator">
+        <attr name="count" format="integer" />
+        <attr name="space" format="dimension" />
+        <attr name="point_size" format="dimension" />
+        <attr name="point_selected_color" format="color|reference" />
+        <attr name="point_normal_color" format="color|reference" />
+        <attr name="point_normal_drawable" format="reference" />
+        <attr name="point_selected_drawable" format="reference" />
+        <attr name="point_radius" format="dimension" />
+    </declare-styleable>
+</resources>

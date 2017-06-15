@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_banner"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <com.autism.timelibs.view.banner.AutoScrollViewPager
+            android:id="@+id/vp_banner"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+
+        <com.autism.timelibs.view.CircleFlowIndicator
+            android:id="@+id/indicator_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            app:point_radius="4dp"
+            app:space="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="-8dp"
+            android:background="@drawable/tag_shape"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="2dp"
+            android:text="活动"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/size" />
+    </RelativeLayout>
+
+</LinearLayout>
