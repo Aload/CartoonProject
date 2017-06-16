@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.autism.timeclub.Foreign.model.RecommonBean;
 import com.autism.timeclub.Foreign.pre.RecommonAdapter;
@@ -31,6 +32,7 @@ public class ForeignFra extends BaseFra<ForeignPre> implements IForeignView, Vie
     private CircleFlowIndicator mIndicator;
     private BannerAdapter mBannerAdapter;
     private AutoScrollViewPager mBannerPager;
+    private TextView mTextActive;
 
     @Override
     protected ForeignPre getPresenter() {
@@ -47,6 +49,7 @@ public class ForeignFra extends BaseFra<ForeignPre> implements IForeignView, Vie
         super.initFraView(mView);
         View mHeaderView = LayoutInflater.from(getActivity()).inflate(R.layout.header_layout, null);
         mBannerPager = (AutoScrollViewPager) mHeaderView.findViewById(R.id.vp_banner);
+        mTextActive = (TextView) mHeaderView.findViewById(R.id.tv_active);
         mIndicator = (CircleFlowIndicator) mHeaderView.findViewById(R.id.indicator_banner);
         WrapRecyclerView mRecyclerView = (WrapRecyclerView) mView.findViewById(R.id.rv_recomment);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -65,6 +68,7 @@ public class ForeignFra extends BaseFra<ForeignPre> implements IForeignView, Vie
         mBannerPager.addOnPageChangeListener(this);
         mBannerPager.setOffscreenPageLimit(mAdsList.size());
         mBannerPager.setAdapter(mBannerAdapter);
+        mBannerPager.startAutoScroll(1500);
         mRecommonAdapter.notifyUi(mGroup);
         mIndicator.setCount(mAdsList.size());
     }
@@ -104,9 +108,10 @@ public class ForeignFra extends BaseFra<ForeignPre> implements IForeignView, Vie
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             RecommonBean.AdsBean adsBean = mBannerData.get(position);
-            ImageView mImage = new ImageView(getContext());
-            mImage.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            ImageView mImage = new ImageView(getActivity());
+            mImage.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             GlideUtils.withNetDefaultImg(getActivity(), mImage, adsBean.getAdsImg(), 0);
+            container.addView(mImage);
             return mImage;
         }
 
@@ -120,5 +125,22 @@ public class ForeignFra extends BaseFra<ForeignPre> implements IForeignView, Vie
         public boolean isViewFromObject(View view, Object object) {
             return object == view;
         }
+
+        @Override
+        public void setPrimaryItem(View container, int position, Object object) {
+            super.setPrimaryItem(container, position, object);
+            String msg = mBannerData.get(position).getFlag().getMsg();
+            mTextActive.setText(msg);
+        }
+    }
+
+    @Override
+    public void onRefresh() {
+        super.onRefresh();
+    }
+
+    @Override
+    public void onLoadmore() {
+        super.onLoadmore();
     }
 }

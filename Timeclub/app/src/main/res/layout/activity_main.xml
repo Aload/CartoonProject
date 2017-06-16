@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_color"
+    android:background="@android:color/white"
     android:orientation="vertical"
     tools:context="com.autism.timeclub.main.MainActivity">
 
@@ -19,10 +19,12 @@
             android:layout_width="220dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
+            app:pstsDividerColor="@android:color/transparent"
             app:pstsIndicatorColor="@color/blue_bg"
+            app:pstsIndicatorHeight="1dp"
             app:pstsShouldExpand="true"
             app:pstsTextAllCaps="true"
-            app:pstsUnderlineColor="@color/blue_bg" />
+            app:pstsUnderlineColor="@android:color/transparent" />
 
         <View
             android:layout_width="match_parent"
@@ -43,6 +45,7 @@
         android:layout_alignParentBottom="true">
 
         <ImageView
+            android:id="@+id/iv_make"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

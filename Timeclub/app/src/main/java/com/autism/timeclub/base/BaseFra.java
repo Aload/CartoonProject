@@ -1,6 +1,7 @@
 package com.autism.timeclub.base;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -36,8 +37,8 @@ public abstract class BaseFra<T extends IPresenter> extends Fragment implements 
     protected void initFraView(View mView) {
         mRefresh = (SpringView) mView.findViewById(R.id.sp_refresh);
         if (null != mRefresh) {
-            mRefresh.setHeader(new TimeHeader(getActivity()));
             mRefresh.setType(SpringView.Type.FOLLOW);
+            mRefresh.setHeader(new TimeHeader(getActivity()));
             mRefresh.setListener(this);
         }
     }
@@ -69,7 +70,7 @@ public abstract class BaseFra<T extends IPresenter> extends Fragment implements 
 
     @Override
     public void onRefresh() {
-        LogicUtils.getHandler(getActivity()).postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 mRefresh.onFinishFreshAndLoad();
@@ -79,7 +80,7 @@ public abstract class BaseFra<T extends IPresenter> extends Fragment implements 
 
     @Override
     public void onLoadmore() {
-        LogicUtils.getHandler(getActivity()).postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 mRefresh.onFinishFreshAndLoad();

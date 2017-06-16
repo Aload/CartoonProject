@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.autism.timeclub.R;
 import com.autism.timeclub.base.holder.BaseRecyclerHolder;
 import com.autism.timeclub.home.model.HotBean;
+import com.autism.timeclub.mine.model.InfoBean;
 import com.autism.timelibs.view.glide.GlideUtils;
 
 /**

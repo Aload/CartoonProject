@@ -15,7 +15,7 @@ import com.autism.timelibs.view.refresh.SpringView;
  */
 public abstract class BaseAct<T extends IPresenter> extends AppCompatActivity {
 
-    protected IPresenter mPresenter;
+    protected T mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public abstract class BaseAct<T extends IPresenter> extends AppCompatActivity {
      *
      * @return
      */
-    protected abstract IPresenter getPresenter();
+    protected abstract T getPresenter();
 
     /**
      * 初始化view

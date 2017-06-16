@@ -2,14 +2,18 @@ package com.autism.timeclub.Foreign.view;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.autism.timeclub.Foreign.model.RecommonAdBean;
 import com.autism.timeclub.Foreign.model.RecommonBean;
 import com.autism.timeclub.Foreign.pre.RecommonItemAdapter;
 import com.autism.timeclub.R;
 import com.autism.timeclub.base.holder.BaseRecyclerHolder;
+import com.autism.timeclub.mine.model.InfoBean;
 import com.autism.timelibs.view.glide.GlideUtils;
 
 /**
@@ -17,24 +21,37 @@ import com.autism.timelibs.view.glide.GlideUtils;
  * Used:Timeclub
  */
 public class RecommonHolder extends BaseRecyclerHolder<RecommonBean.GroupBean> {
-    private ImageView mImage;
+    private ImageView mImage, mAdImg;
     private TextView mName;
     private RecyclerView mRecycler;
+    private LinearLayout mContent;
 
     public RecommonHolder(ViewGroup parent, int res) {
         super(parent, res);
         mImage = $(R.id.iv_sort);
         mName = $(R.id.tv_name);
         mRecycler = $(R.id.rv_view_header);
+        mAdImg = $(R.id.iv_add_img);
+        mContent = $(R.id.ll_content);
     }
 
     @Override
     public void setData(RecommonBean.GroupBean mData) {
-        GlideUtils.withNetDefaultImg(getContext(), mImage, mData.getIcon(), 0);
-        mName.setText(mData.getName());
-        mRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        RecommonItemAdapter mItemAdapter = new RecommonItemAdapter();
-        mRecycler.setAdapter(mItemAdapter);
-        mItemAdapter.updateUi(mData.getStatuss());
+        if (mData.getAds().isEmpty()) {
+            mContent.setVisibility(View.VISIBLE);
+            mAdImg.setVisibility(View.GONE);
+            GlideUtils.withNetDefaultImg(getContext(), mImage, mData.getIcon(), 0);
+            mName.setText(mData.getName());
+            mRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
+            RecommonItemAdapter mItemAdapter = new RecommonItemAdapter();
+            mRecycler.setAdapter(mItemAdapter);
+            mItemAdapter.updateUi(mData.getStatuss());
+        } else {
+            mContent.setVisibility(View.GONE);
+            mAdImg.setVisibility(View.VISIBLE);
+            RecommonAdBean recommonAdBean = mData.getAds().get(0);
+            GlideUtils.withNetRoundImg(getContext(), mAdImg, recommonAdBean.getAdsImg(), 0);
+            measure(mAdImg, 0, 250);
+        }
     }
 }

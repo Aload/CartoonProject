@@ -17,15 +17,19 @@
 
         <com.autism.timelibs.view.CircleFlowIndicator
             android:id="@+id/indicator_banner"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
+            android:background="@android:color/transparent"
+            app:point_normal_drawable="@drawable/about_indicator_normal"
             app:point_radius="4dp"
+            app:point_selected_drawable="@drawable/about_indicator_enable"
             app:space="5dp" />
 
         <TextView
+            android:id="@+id/tv_active"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

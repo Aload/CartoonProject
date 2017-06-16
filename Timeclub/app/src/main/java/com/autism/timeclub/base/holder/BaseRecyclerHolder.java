@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.autism.timeclub.mine.model.InfoBean;
 import com.autism.timelibs.utils.ViewUtil;
 
 /**

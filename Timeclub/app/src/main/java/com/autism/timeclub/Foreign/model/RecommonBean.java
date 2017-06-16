@@ -275,7 +275,7 @@ public class RecommonBean {
         private String is_show;
         private int groupId;
         private List<StatussBean> statuss;
-        private List<?> ads;
+        private List<RecommonAdBean> ads;
 
         public String getId() {
             return id;
@@ -365,11 +365,11 @@ public class RecommonBean {
             this.statuss = statuss;
         }
 
-        public List<?> getAds() {
+        public List<RecommonAdBean> getAds() {
             return ads;
         }
 
-        public void setAds(List<?> ads) {
+        public void setAds(List<RecommonAdBean> ads) {
             this.ads = ads;
         }
 

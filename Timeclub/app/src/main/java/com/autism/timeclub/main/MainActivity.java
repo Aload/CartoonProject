@@ -1,28 +1,33 @@
 package com.autism.timeclub.main;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.autism.timeclub.Foreign.ForeignFra;
 import com.autism.timeclub.R;
 import com.autism.timeclub.base.BaseAct;
 import com.autism.timeclub.home.view.HomeFra;
+import com.autism.timeclub.login.LoginAct;
 import com.autism.timeclub.mine.MineFra;
 import com.autism.timelibs.http.IPresenter;
+import com.autism.timelibs.utils.ViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseAct<IMainPre> {
+public class MainActivity extends BaseAct<IMainPre> implements View.OnClickListener {
 
     private String[] mTitle = new String[]{"热门", "推荐", "关注"};
 
     @Override
-    protected IPresenter getPresenter() {
+    protected IMainPre getPresenter() {
         return null;
     }
 
@@ -35,11 +40,20 @@ public class MainActivity extends BaseAct<IMainPre> {
     protected void initView() {
         super.initView();
         PagerSlidingTabStrip mStrip = (PagerSlidingTabStrip) findViewById(R.id.tab_strip);
+        mStrip.setTextColorResource(R.color.blue_bg);
         ViewPager mPager = (ViewPager) findViewById(R.id.vp_pager);
+        findViewById(R.id.iv_make).setOnClickListener(this);
         TerminalAdapter mTerminalAdapter = new TerminalAdapter(getSupportFragmentManager());
         mPager.setCurrentItem(1);
         mPager.setAdapter(mTerminalAdapter);
         mStrip.setViewPager(mPager);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent mIntent = new Intent(this, LoginAct.class);
+        startActivity(mIntent);
+        ViewUtil.left2RightOut(this);
     }
 
     private class TerminalAdapter extends FragmentPagerAdapter {

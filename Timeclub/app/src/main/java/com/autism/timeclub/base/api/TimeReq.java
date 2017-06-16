@@ -1,6 +1,7 @@
 package com.autism.timeclub.base.api;
 
 import com.autism.timeclub.Foreign.model.RecommonBean;
+import com.autism.timeclub.mine.model.InfoBean;
 import com.autism.timelibs.http.RetrofitManager;
 import com.autism.timelibs.http.RxUtil;
 import com.google.gson.JsonObject;
@@ -67,6 +68,20 @@ public class TimeReq {
     public void getRecommonRes(Subscriber<RecommonBean> subscriber, String mUserId, String mVersion, String mLoginId) {
         mTimeApi.getRecommonRes("Status", "getIndex", mUserId, "%E5%AE%89%E6%99%BA&ver", mVersion, mLoginId)
                 .compose(RxUtil.<RecommonBean>ioMain())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取关注列表数据
+     *
+     * @param subscriber
+     * @param page
+     * @param pageSize
+     * @param mLoginId
+     */
+    public void getAttentionRes(Subscriber<InfoBean> subscriber, int page, int pageSize, String mLoginId) {
+        mTimeApi.getAttentionRes("Status", "getIndexNoLogin", page, pageSize, mLoginId)
+                .compose(RxUtil.<InfoBean>ioMain())
                 .subscribe(subscriber);
     }
 }
