@@ -14,12 +14,13 @@ import com.autism.timelibs.utils.ViewUtil;
  * Author：autism on 2017/4/5 14:37
  * Used:GlobalTv
  */
-public abstract class BaseRecyclerHolder<M> extends RecyclerView.ViewHolder {
+public abstract class BaseRecyclerHolder<M> extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     protected static final String TAG = BaseRecyclerHolder.class.getSimpleName();
 
     public BaseRecyclerHolder(ViewGroup parent, int res) {
         super(LayoutInflater.from(parent.getContext()).inflate(res, parent, false));
+        itemView.setOnClickListener(this);
     }
 
     public abstract void setData(M mData);
@@ -42,4 +43,10 @@ public abstract class BaseRecyclerHolder<M> extends RecyclerView.ViewHolder {
     protected void measure(View mViewTitle, int width, int height) {
         ViewUtil.measure(mViewTitle, width, height);
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
 }

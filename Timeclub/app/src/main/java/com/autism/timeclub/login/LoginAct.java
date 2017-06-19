@@ -6,7 +6,6 @@ import android.widget.EditText;
 
 import com.autism.timeclub.R;
 import com.autism.timeclub.base.BaseAct;
-import com.autism.timelibs.http.IPresenter;
 
 /**
  * Author：autism on 2017/6/16 16:34
