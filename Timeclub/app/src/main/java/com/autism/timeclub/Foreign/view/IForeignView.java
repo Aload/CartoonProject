@@ -1,4 +1,4 @@
-package com.autism.timeclub.Foreign;
+package com.autism.timeclub.Foreign.view;
 
 import com.autism.timeclub.Foreign.model.RecommonBean;
 import com.autism.timelibs.http.IView;

@@ -1,5 +1,6 @@
 package com.autism.timeclub.Foreign.view;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,9 +11,11 @@ import android.widget.TextView;
 
 import com.autism.timeclub.Foreign.model.RecommonAdBean;
 import com.autism.timeclub.Foreign.model.RecommonBean;
+import com.autism.timeclub.Foreign.pre.DetailAnimePre;
 import com.autism.timeclub.Foreign.pre.RecommonItemAdapter;
 import com.autism.timeclub.R;
 import com.autism.timeclub.base.holder.BaseRecyclerHolder;
+import com.autism.timeclub.base.holder.IOnItemClickListener;
 import com.autism.timeclub.mine.model.InfoBean;
 import com.autism.timelibs.view.glide.GlideUtils;
 
@@ -36,7 +39,7 @@ public class RecommonHolder extends BaseRecyclerHolder<RecommonBean.GroupBean> {
     }
 
     @Override
-    public void setData(RecommonBean.GroupBean mData) {
+    public void setData(final RecommonBean.GroupBean mData) {
         if (mData.getAds().isEmpty()) {
             mContent.setVisibility(View.VISIBLE);
             mAdImg.setVisibility(View.GONE);
@@ -45,6 +48,14 @@ public class RecommonHolder extends BaseRecyclerHolder<RecommonBean.GroupBean> {
             mRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
             RecommonItemAdapter mItemAdapter = new RecommonItemAdapter();
             mRecycler.setAdapter(mItemAdapter);
+            mItemAdapter.setOnclickItem(new IOnItemClickListener() {
+                @Override
+                public void onClickListener(int position) {
+                    Intent mIntent = new Intent(getContext(), DetailAnimeAct.class);
+                    mIntent.putExtra("statusId", mData.getStatuss().get(position).getStatus().getData().getStoryId());
+                    getContext().startActivity(mIntent);
+                }
+            });
             mItemAdapter.updateUi(mData.getStatuss());
         } else {
             mContent.setVisibility(View.GONE);
@@ -54,4 +65,6 @@ public class RecommonHolder extends BaseRecyclerHolder<RecommonBean.GroupBean> {
             measure(mAdImg, 0, 250);
         }
     }
+
+
 }

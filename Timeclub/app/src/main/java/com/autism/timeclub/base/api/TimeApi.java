@@ -1,5 +1,6 @@
 package com.autism.timeclub.base.api;
 
+import com.autism.timeclub.Foreign.model.DetailBean;
 import com.autism.timeclub.Foreign.model.RecommonBean;
 import com.autism.timeclub.mine.model.InfoBean;
 import com.google.gson.JsonObject;
@@ -34,4 +35,7 @@ public interface TimeApi {
     @GET("v2/interface.php")
     Observable<InfoBean> getAttentionRes(@Query("m") String status, @Query("a") String getIndexNoLogin,
                                          @Query("pageNo") int page, @Query("pageSize") int pageSize, @Query("loginId") String mLoginId);
+
+    @GET("v2/interface.php?m=Status&a=getStatusDetail&statusId=329179&userId=-1&ver=4.6.5&paintVer=3&loginId=-1")
+    Observable<DetailBean> getDetailRes();
 }

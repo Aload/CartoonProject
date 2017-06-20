@@ -12,11 +12,12 @@ import com.autism.timelibs.utils.ViewUtil;
 
 /**
  * Author：autism on 2017/4/5 14:37
- * Used:GlobalTv
+ * Used:TimeClub
  */
 public abstract class BaseRecyclerHolder<M> extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     protected static final String TAG = BaseRecyclerHolder.class.getSimpleName();
+    private IOnItemClickListener mItemClick;
 
     public BaseRecyclerHolder(ViewGroup parent, int res) {
         super(LayoutInflater.from(parent.getContext()).inflate(res, parent, false));
@@ -46,7 +47,16 @@ public abstract class BaseRecyclerHolder<M> extends RecyclerView.ViewHolder impl
 
     @Override
     public void onClick(View v) {
+        mItemClick.onClickListener(getAdapterPosition());
+    }
 
+    /**
+     * item 点击事件
+     *
+     * @param onClickItem
+     */
+    public void setOnClickItem(IOnItemClickListener onClickItem) {
+        this.mItemClick = onClickItem;
     }
 
 }

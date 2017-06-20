@@ -4,19 +4,16 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.astuetz.PagerSlidingTabStrip;
-import com.autism.timeclub.Foreign.ForeignFra;
+import com.autism.timeclub.Foreign.view.ForeignFra;
 import com.autism.timeclub.R;
 import com.autism.timeclub.base.BaseAct;
 import com.autism.timeclub.home.view.HomeFra;
 import com.autism.timeclub.login.LoginAct;
 import com.autism.timeclub.mine.MineFra;
-import com.autism.timelibs.http.IPresenter;
 import com.autism.timelibs.utils.ViewUtil;
 
 import java.util.ArrayList;

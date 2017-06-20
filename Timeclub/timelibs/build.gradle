@@ -48,4 +48,7 @@ dependencies {
     // 修改"1.0.0"为实际引用的版本
     compile 'com.tencent.wcdb:wcdb-android:1.0.0'
     compile 'com.kevin:wraprecyclerview:1.0.6'
+
+    //播放
+    compile 'fm.jiecao:jiecaovideoplayer:3.1'
 }

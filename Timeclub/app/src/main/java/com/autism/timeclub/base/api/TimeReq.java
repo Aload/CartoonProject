@@ -1,5 +1,6 @@
 package com.autism.timeclub.base.api;
 
+import com.autism.timeclub.Foreign.model.DetailBean;
 import com.autism.timeclub.Foreign.model.RecommonBean;
 import com.autism.timeclub.mine.model.InfoBean;
 import com.autism.timelibs.http.RetrofitManager;
@@ -21,7 +22,10 @@ public class TimeReq {
 
     public static TimeReq getInstance() {
         if (null == INSTANCE) {
-            INSTANCE = new TimeReq();
+            synchronized (TimeReq.class) {
+                if (INSTANCE == null)
+                    INSTANCE = new TimeReq();
+            }
         }
         return INSTANCE;
     }
@@ -82,6 +86,16 @@ public class TimeReq {
     public void getAttentionRes(Subscriber<InfoBean> subscriber, int page, int pageSize, String mLoginId) {
         mTimeApi.getAttentionRes("Status", "getIndexNoLogin", page, pageSize, mLoginId)
                 .compose(RxUtil.<InfoBean>ioMain())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取详情列表
+     *
+     * @param subscriber
+     */
+    public void getDetailRes(Subscriber<DetailBean> subscriber) {
+        mTimeApi.getDetailRes().compose(RxUtil.<DetailBean>ioMain())
                 .subscribe(subscriber);
     }
 }

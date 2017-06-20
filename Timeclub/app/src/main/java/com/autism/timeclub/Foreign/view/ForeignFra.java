@@ -1,4 +1,4 @@
-package com.autism.timeclub.Foreign;
+package com.autism.timeclub.Foreign.view;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.autism.timeclub.Foreign.model.RecommonBean;
+import com.autism.timeclub.Foreign.pre.ForeignPre;
 import com.autism.timeclub.Foreign.pre.RecommonAdapter;
 import com.autism.timeclub.R;
 import com.autism.timeclub.base.BaseFra;

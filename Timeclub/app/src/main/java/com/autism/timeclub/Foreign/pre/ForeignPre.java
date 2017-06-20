@@ -1,14 +1,13 @@
-package com.autism.timeclub.Foreign;
+package com.autism.timeclub.Foreign.pre;
 
 import android.app.Activity;
 
+import com.autism.timeclub.Foreign.view.IForeignView;
 import com.autism.timeclub.Foreign.model.RecommonBean;
 import com.autism.timeclub.base.api.TimeReq;
 import com.autism.timelibs.http.BasePresenter;
 import com.autism.timelibs.http.IResultSuccessListener;
 import com.autism.timelibs.http.RxSubscriber;
-
-import java.sql.Time;
 
 import rx.Subscriber;
 

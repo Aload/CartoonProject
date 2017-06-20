@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import com.autism.timeclub.Foreign.model.RecommonBean;
 import com.autism.timeclub.Foreign.view.RecommonItemHolder;
 import com.autism.timeclub.R;
+import com.autism.timeclub.base.holder.IOnItemClickListener;
 import com.autism.timeclub.home.model.HotBean;
 import com.autism.timeclub.home.view.HotHeaderHolder;
 
@@ -17,6 +18,7 @@ import java.util.List;
  */
 public class RecommonItemAdapter extends RecyclerView.Adapter<RecommonItemHolder> {
     private List<RecommonBean.GroupBean.StatussBean> mHotList;
+    private IOnItemClickListener mItemClickListener;
 
     @Override
     public RecommonItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,6 +29,11 @@ public class RecommonItemAdapter extends RecyclerView.Adapter<RecommonItemHolder
     public void onBindViewHolder(RecommonItemHolder holder, int position) {
         RecommonBean.GroupBean.StatussBean statussBean = mHotList.get(position);
         holder.setData(statussBean);
+        holder.setOnClickItem(mItemClickListener);
+    }
+
+    public void setOnclickItem(IOnItemClickListener mItemClickListener) {
+        this.mItemClickListener = mItemClickListener;
     }
 
     @Override
