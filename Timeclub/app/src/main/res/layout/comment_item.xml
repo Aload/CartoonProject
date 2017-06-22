@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_avater"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription=""
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_avater"
+        tools:ignore="RelativeOverlap,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/tv_level"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_avater" />
+
+    <LinearLayout
+        android:id="@+id/ll_attention"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/btn_blue_attention"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingLeft="17dp"
+        android:paddingRight="17dp"
+        android:paddingTop="8dp"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="十"
+            android:textColor="@color/blue_bg"
+            android:textSize="@dimen/size_2"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/add"
+            android:text="关注"
+            android:textColor="@color/blue_bg"
+            android:textSize="@dimen/size_2"
+            tools:ignore="HardcodedText,ObsoleteLayoutParam" />
+    </LinearLayout>
+</RelativeLayout>

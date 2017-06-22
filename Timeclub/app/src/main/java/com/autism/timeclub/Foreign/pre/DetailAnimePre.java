@@ -16,8 +16,11 @@ import rx.Subscriber;
  * Used:Timeclub
  */
 public class DetailAnimePre extends BasePresenter<IDetailView> {
-    public DetailAnimePre(Activity activity, IDetailView view) {
+    private String mStoryId;
+
+    public DetailAnimePre(Activity activity, IDetailView view, String mStoryId) {
         super(activity, view);
+        this.mStoryId = mStoryId;
     }
 
     @Override
@@ -33,7 +36,8 @@ public class DetailAnimePre extends BasePresenter<IDetailView> {
                 mView.getDetailError(msg);
             }
         });
-        TimeReq.getInstance().getDetailRes(subscriber);
+
+        TimeReq.getInstance().getDetailRes(subscriber, mStoryId);
         addSubscrebe(subscriber);
     }
 }

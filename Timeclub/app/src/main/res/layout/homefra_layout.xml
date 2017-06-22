@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.autism.timelibs.view.refresh.SpringView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.autism.timelibs.view.refresh.TwinklingRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sp_refresh"
     android:layout_width="match_parent"
@@ -110,4 +110,4 @@
                 android:scrollbars="none" />
         </LinearLayout>
     </ScrollView>
-</com.autism.timelibs.view.refresh.SpringView>
+</com.autism.timelibs.view.refresh.TwinklingRefreshLayout>

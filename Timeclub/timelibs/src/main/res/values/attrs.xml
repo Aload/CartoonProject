@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="SpringView">
-        <attr name="type">
-            <enum name="overlap" value="0" />
-            <enum name="follow" value="1" />
-        </attr>
-        <attr name="give">
-            <enum name="both" value="0" />
-            <enum name="top" value="1" />
-            <enum name="bottom" value="2" />
-            <enum name="none" value="3" />
-        </attr>
-        <attr name="header" format="reference" />
-        <attr name="footer" format="reference" />
-    </declare-styleable>
 
     <declare-styleable name="FlowIndicator">
         <attr name="count" format="integer" />
@@ -24,5 +10,26 @@
         <attr name="point_normal_drawable" format="reference" />
         <attr name="point_selected_drawable" format="reference" />
         <attr name="point_radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="TwinklingRefreshLayout">
+        <attr name="tr_max_head_height" format="dimension" />
+        <attr name="tr_head_height" format="dimension" />
+        <attr name="tr_max_bottom_height" format="dimension" />
+        <attr name="tr_bottom_height" format="dimension" />
+        <attr name="tr_overscroll_height" format="dimension" />
+        <attr name="tr_enable_refresh" format="boolean" />
+        <attr name="tr_enable_loadmore" format="boolean" />
+        <attr name="tr_pureScrollMode_on" format="boolean" />
+        <attr name="tr_overscroll_top_show" format="boolean" />
+        <attr name="tr_overscroll_bottom_show" format="boolean" />
+        <attr name="tr_enable_overscroll" format="boolean" />
+        <attr name="tr_headerView" format="dimension" />
+        <attr name="tr_bottomView" format="dimension" />
+        <attr name="tr_floatRefresh" format="boolean" />
+        <attr name="tr_autoLoadMore" format="boolean" />
+        <attr name="tr_enable_keepIView" format="boolean" />
+        <attr name="tr_showRefreshingWhenOverScroll" format="boolean" />
+        <attr name="tr_showLoadingWhenOverScroll" format="boolean" />
     </declare-styleable>
 </resources>

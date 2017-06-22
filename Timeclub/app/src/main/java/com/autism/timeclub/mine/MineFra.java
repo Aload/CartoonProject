@@ -9,6 +9,8 @@ import com.autism.timeclub.base.BaseFra;
 import com.autism.timeclub.mine.model.InfoBean;
 import com.autism.timeclub.mine.pre.InfoAdapter;
 import com.autism.timelibs.utils.LineLog;
+import com.autism.timelibs.utils.LogicUtils;
+import com.autism.timelibs.view.refresh.TwinklingRefreshLayout;
 
 /**
  * Author：autism on 2017/6/13 10:03
@@ -28,6 +30,21 @@ public class MineFra extends BaseFra<MinePre> implements IMineView {
     }
 
     @Override
+    public void onRefreshs(final TwinklingRefreshLayout refreshLayout) {
+        LogicUtils.getHandler(getActivity()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                refreshLayout.onFinishRefresh();
+            }
+        }, 5000);
+    }
+
+    @Override
+    public void onLoadMores(TwinklingRefreshLayout refreshLayout) {
+
+    }
+
+    @Override
     protected void initFraView(View mView) {
         super.initFraView(mView);
         RecyclerView mRecycler = (RecyclerView) mView.findViewById(R.id.rv_info);
@@ -39,7 +56,6 @@ public class MineFra extends BaseFra<MinePre> implements IMineView {
     @Override
     public void getAttentionSuccess(InfoBean mData) {
         mInfoAdapter.updateUi(mData.getStatuss());
-
     }
 
     @Override

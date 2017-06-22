@@ -16,9 +16,11 @@ import com.autism.timeclub.Foreign.pre.RecommonAdapter;
 import com.autism.timeclub.R;
 import com.autism.timeclub.base.BaseFra;
 import com.autism.timelibs.utils.LineLog;
+import com.autism.timelibs.utils.LogicUtils;
 import com.autism.timelibs.view.CircleFlowIndicator;
 import com.autism.timelibs.view.banner.AutoScrollViewPager;
 import com.autism.timelibs.view.glide.GlideUtils;
+import com.autism.timelibs.view.refresh.TwinklingRefreshLayout;
 import com.kevin.wraprecyclerview.WrapAdapter;
 import com.kevin.wraprecyclerview.WrapRecyclerView;
 
@@ -44,6 +46,22 @@ public class ForeignFra extends BaseFra<ForeignPre> implements IForeignView, Vie
     protected int getFraRlayoutId() {
         return R.layout.foreign_layout;
     }
+
+    @Override
+    public void onRefreshs(final TwinklingRefreshLayout refreshLayout) {
+        LogicUtils.getHandler(getActivity()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                refreshLayout.onFinishRefresh();
+            }
+        }, 5000);
+    }
+
+    @Override
+    public void onLoadMores(TwinklingRefreshLayout refreshLayout) {
+
+    }
+
 
     @Override
     protected void initFraView(View mView) {
@@ -135,13 +153,4 @@ public class ForeignFra extends BaseFra<ForeignPre> implements IForeignView, Vie
         }
     }
 
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-    }
-
-    @Override
-    public void onLoadmore() {
-        super.onLoadmore();
-    }
 }

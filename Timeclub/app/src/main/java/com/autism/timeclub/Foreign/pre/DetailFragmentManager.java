@@ -53,4 +53,11 @@ public class DetailFragmentManager {
         mBaseFragment.put(position, baseFra);
         return baseFra;
     }
+
+    /**
+     * 清楚缓存
+     */
+    public void clearContainer() {
+        if (mBaseFragment != null) mBaseFragment.clear();
+    }
 }

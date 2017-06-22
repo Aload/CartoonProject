@@ -1,5 +1,6 @@
 package com.autism.timeclub.Foreign.view;
 
+import com.autism.timeclub.Foreign.model.CommentBean;
 import com.autism.timelibs.http.IView;
 
 /**
@@ -7,4 +8,7 @@ import com.autism.timelibs.http.IView;
  * Used:Timeclub
  */
 public interface IThirdView extends IView {
+    void getCommentSuccess(CommentBean mData);
+
+    void getCommentError(String msg);
 }

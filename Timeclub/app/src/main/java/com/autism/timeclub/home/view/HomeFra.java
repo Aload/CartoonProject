@@ -15,7 +15,9 @@ import com.autism.timeclub.home.pre.HotBottomAdapter;
 import com.autism.timeclub.home.pre.HotHeaderAdapter;
 import com.autism.timeclub.home.pre.HotMiddlerAdapter;
 import com.autism.timelibs.utils.LineLog;
+import com.autism.timelibs.utils.LogicUtils;
 import com.autism.timelibs.view.glide.GlideUtils;
+import com.autism.timelibs.view.refresh.TwinklingRefreshLayout;
 
 import java.util.List;
 
@@ -42,6 +44,21 @@ public class HomeFra extends BaseFra<HomePre> implements View.OnClickListener, I
     @Override
     protected int getFraRlayoutId() {
         return R.layout.homefra_layout;
+    }
+
+    @Override
+    public void onRefreshs(final TwinklingRefreshLayout refreshLayout) {
+        LogicUtils.getHandler(getActivity()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                refreshLayout.onFinishRefresh();
+            }
+        }, 5000);
+    }
+
+    @Override
+    public void onLoadMores(TwinklingRefreshLayout refreshLayout) {
+
     }
 
     @Override

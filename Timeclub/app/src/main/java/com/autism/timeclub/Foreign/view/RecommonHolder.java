@@ -52,7 +52,8 @@ public class RecommonHolder extends BaseRecyclerHolder<RecommonBean.GroupBean> {
                 @Override
                 public void onClickListener(int position) {
                     Intent mIntent = new Intent(getContext(), DetailAnimeAct.class);
-                    mIntent.putExtra("statusId", mData.getStatuss().get(position).getStatus().getData().getStoryId());
+                    mIntent.putExtra("storyId", mData.getStatuss().get(position).getStatus().getData().getStoryId());
+                    mIntent.putExtra("statusId", mData.getStatuss().get(position).getStatus().getId());
                     getContext().startActivity(mIntent);
                 }
             });

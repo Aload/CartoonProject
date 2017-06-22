@@ -1,6 +1,9 @@
 package com.autism.timeclub.base.api;
 
+import com.autism.timeclub.Foreign.model.CommentBean;
 import com.autism.timeclub.Foreign.model.DetailBean;
+import com.autism.timeclub.Foreign.model.FirstBean;
+import com.autism.timeclub.Foreign.model.LikeBean;
 import com.autism.timeclub.Foreign.model.RecommonBean;
 import com.autism.timeclub.mine.model.InfoBean;
 import com.google.gson.JsonObject;
@@ -36,6 +39,15 @@ public interface TimeApi {
     Observable<InfoBean> getAttentionRes(@Query("m") String status, @Query("a") String getIndexNoLogin,
                                          @Query("pageNo") int page, @Query("pageSize") int pageSize, @Query("loginId") String mLoginId);
 
-    @GET("v2/interface.php?m=Status&a=getStatusDetail&statusId=329179&userId=-1&ver=4.6.5&paintVer=3&loginId=-1")
-    Observable<DetailBean> getDetailRes();
+    @GET("v2/interface.php?m=Status&a=getStatusDetail&userId=-1&ver=4.6.5&paintVer=3&loginId=-1")
+    Observable<DetailBean> getDetailRes(@Query("statusId") String statusId);
+
+    @GET("v2/interface.php?m=Status&a=getStatusMoreAtStory&ver=4.6.5&loginId=-1")
+    Observable<FirstBean> getFirstRes(@Query("storyId") String storyId, @Query("statudId") String statudId);
+
+    @GET("v2/interface.php?m=LikeOther&a=getLikeOtherUser&targetType=6&userId=-1&loginId=-1")
+    Observable<CommentBean> getCommentAttention(@Query("targetValue") String mStatusId, @Query("pageNo") int mOffPage, @Query("pageSize") int mPageSize);
+
+    @GET("v2/interface.php?m=CommentOther&a=getOtherComments&visitorId=-1&targetType=6&loginId=-1")
+    Observable<LikeBean> getLikeRes(@Query("targetValue") String mStatusId, @Query("pageNo") int mOffPage, @Query("pageSize") int mPageSize);
 }

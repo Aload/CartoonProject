@@ -1,7 +1,6 @@
 package com.autism.timeclub.base;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,36 +9,66 @@ import android.view.ViewGroup;
 
 import com.autism.timeclub.R;
 import com.autism.timelibs.http.IPresenter;
-import com.autism.timelibs.utils.LogicUtils;
 import com.autism.timelibs.utils.ViewUtil;
-import com.autism.timelibs.view.refresh.SpringView;
-import com.autism.timelibs.view.refresh.TimeHeader;
+import com.autism.timelibs.view.refresh.Footer.LoadingView;
+import com.autism.timelibs.view.refresh.RefreshListenerAdapter;
+import com.autism.timelibs.view.refresh.TwinklingRefreshLayout;
+import com.autism.timelibs.view.refresh.header.SinaRefreshView;
+import com.autism.timelibs.view.refresh.header.bezierlayout.BezierLayout;
 
 /**
  * Author：autism on 2017/6/13 09:18
  * Used:Timeclub
  */
-public abstract class BaseFra<T extends IPresenter> extends Fragment implements SpringView.OnFreshListener {
+public abstract class BaseFra<T extends IPresenter> extends Fragment {
     protected T mPresenter;
-    protected SpringView mRefresh;
     protected static final String TAG = BaseFra.class.getSimpleName();
-
+   protected TwinklingRefreshLayout mRefresh;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View mView = inflater.inflate(getFraRlayoutId(), null);
+        initFraView(mView);
         mPresenter = getPresenter();
         if (null != mPresenter) mPresenter.attachView();
-        initFraView(mView);
         return mView;
     }
 
     protected void initFraView(View mView) {
-        mRefresh = (SpringView) mView.findViewById(R.id.sp_refresh);
-        if (null != mRefresh) {
-            mRefresh.setType(SpringView.Type.FOLLOW);
-            mRefresh.setHeader(new TimeHeader(getActivity()));
-            mRefresh.setListener(this);
+
+        mRefresh = (TwinklingRefreshLayout) mView.findViewById(R.id.sp_refresh);
+        if (mRefresh != null) {
+            SinaRefreshView headerView = new SinaRefreshView(getActivity());
+            headerView.setArrowResource(R.drawable.arrow);
+            headerView.setTextColor(0xff745D5C);
+//        TextHeaderView headerView = (TextHeaderView) View.inflate(this,R.layout.header_tv,null);
+            mRefresh.setHeaderView(headerView);
+
+            LoadingView loadingView = new LoadingView(getActivity());
+            mRefresh.setBottomView(loadingView);
+            mRefresh.setOnRefreshListener(new RefreshListenerAdapter() {
+                @Override
+                public void onRefresh(TwinklingRefreshLayout refreshLayout) {
+                    super.onRefresh(refreshLayout);
+                    onRefreshs(refreshLayout);
+                }
+
+                @Override
+                public void onLoadMore(TwinklingRefreshLayout refreshLayout) {
+                    super.onLoadMore(refreshLayout);
+                    onLoadMores(refreshLayout);
+                }
+
+                @Override
+                public void onFinishRefresh() {
+                    super.onFinishRefresh();
+                }
+
+                @Override
+                public void onFinishLoadMore() {
+                    super.onFinishLoadMore();
+                }
+            });
         }
     }
 
@@ -68,25 +97,9 @@ public abstract class BaseFra<T extends IPresenter> extends Fragment implements 
         super.onDestroy();
     }
 
-    @Override
-    public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mRefresh.onFinishFreshAndLoad();
-            }
-        }, 2000);
-    }
+    public abstract void onRefreshs(TwinklingRefreshLayout refreshLayout);
 
-    @Override
-    public void onLoadmore() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mRefresh.onFinishFreshAndLoad();
-            }
-        }, 2000);
-    }
+    public abstract void onLoadMores(TwinklingRefreshLayout refreshLayout);
 
     @Override
     public void onDestroyView() {

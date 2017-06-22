@@ -1,6 +1,9 @@
 package com.autism.timeclub.base.api;
 
+import com.autism.timeclub.Foreign.model.CommentBean;
 import com.autism.timeclub.Foreign.model.DetailBean;
+import com.autism.timeclub.Foreign.model.FirstBean;
+import com.autism.timeclub.Foreign.model.LikeBean;
 import com.autism.timeclub.Foreign.model.RecommonBean;
 import com.autism.timeclub.mine.model.InfoBean;
 import com.autism.timelibs.http.RetrofitManager;
@@ -94,8 +97,43 @@ public class TimeReq {
      *
      * @param subscriber
      */
-    public void getDetailRes(Subscriber<DetailBean> subscriber) {
-        mTimeApi.getDetailRes().compose(RxUtil.<DetailBean>ioMain())
+    public void getDetailRes(Subscriber<DetailBean> subscriber, String statusId) {
+        mTimeApi.getDetailRes(statusId).compose(RxUtil.<DetailBean>ioMain())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取content数据
+     *
+     * @param subscriber
+     */
+    public void getFirstRes(Subscriber<FirstBean> subscriber, String storyId, String statusId) {
+        mTimeApi.getFirstRes(storyId, statusId).compose(RxUtil.<FirstBean>ioMain())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取关注数据
+     *
+     * @param subscriber
+     * @param mStatusId
+     * @param mOffPage
+     * @param mPageSize
+     */
+    public void getCommentAttention(Subscriber<CommentBean> subscriber, String mStatusId, int mOffPage, int mPageSize) {
+        mTimeApi.getCommentAttention(mStatusId, mOffPage, mPageSize).compose(RxUtil.<CommentBean>ioMain())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取评论
+     * @param subscriber
+     * @param mStatusId
+     * @param mOffPage
+     * @param mPageSize
+     */
+    public void getLikeRes(Subscriber<LikeBean> subscriber, String mStatusId, int mOffPage, int mPageSize) {
+        mTimeApi.getLikeRes(mStatusId, mOffPage, mPageSize).compose(RxUtil.<LikeBean>ioMain())
                 .subscribe(subscriber);
     }
 }

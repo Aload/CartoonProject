@@ -32,6 +32,7 @@
         android:id="@+id/tv_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxLines="2"
         android:textSize="@dimen/size_2" />
 
     <include layout="@layout/bottom_tag" />

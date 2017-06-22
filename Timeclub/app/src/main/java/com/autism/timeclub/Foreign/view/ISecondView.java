@@ -1,5 +1,6 @@
 package com.autism.timeclub.Foreign.view;
 
+import com.autism.timeclub.Foreign.model.LikeBean;
 import com.autism.timelibs.http.IView;
 
 /**
@@ -7,4 +8,8 @@ import com.autism.timelibs.http.IView;
  * Used:Timeclub
  */
 public interface ISecondView extends IView {
+    void getSuccessLikeBean(LikeBean mData);
+
+    void getErrorLikeBean(String msg);
+
 }

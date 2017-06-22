@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.autism.timelibs.http.IPresenter;
 import com.autism.timelibs.utils.ViewUtil;
-import com.autism.timelibs.view.refresh.SpringView;
 
 /**
  * Author：autism on 2017/6/12 14:59

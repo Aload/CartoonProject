@@ -67,7 +67,7 @@ public class InfoHolder extends BaseRecyclerHolder<InfoBean.StatussBean> {
         GlideUtils.withCircleImg(getContext(), mHeaderImg, mData.getUser().getAvatar(), 0);
         mLevel.setText(new StringBuffer().append("LV.").append(mData.getUser().getUserRank()));
         mName.setText(mData.getUser().getNick());
-        boolean showType = mData.getData().getType() == 1;
+        boolean showType = mData.getTargetType() != 1;
         if (showType) {
             mPicLayout.setVisibility(View.VISIBLE);
             mVideoContent.setVisibility(View.GONE);

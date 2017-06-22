@@ -41,7 +41,6 @@ public class MainActivity extends BaseAct<IMainPre> implements View.OnClickListe
         ViewPager mPager = (ViewPager) findViewById(R.id.vp_pager);
         findViewById(R.id.iv_make).setOnClickListener(this);
         TerminalAdapter mTerminalAdapter = new TerminalAdapter(getSupportFragmentManager());
-        mPager.setCurrentItem(1);
         mPager.setAdapter(mTerminalAdapter);
         mStrip.setViewPager(mPager);
     }
@@ -54,23 +53,19 @@ public class MainActivity extends BaseAct<IMainPre> implements View.OnClickListe
     }
 
     private class TerminalAdapter extends FragmentPagerAdapter {
-        private List<Fragment> fragments = new ArrayList<>();
 
         public TerminalAdapter(FragmentManager fm) {
             super(fm);
-            fragments.add(0, new HomeFra());
-            fragments.add(1, new ForeignFra());
-            fragments.add(2, new MineFra());
         }
 
         @Override
         public Fragment getItem(int position) {
-            return fragments.get(position);
+            return MainFragmentMannager.getInstance().getFraInstance(position);
         }
 
         @Override
         public int getCount() {
-            return fragments.size();
+            return 3;
         }
 
         @Override

@@ -14,4 +14,5 @@
     <string name="weixin">微信</string>
     <string name="qq">QQ</string>
     <string name="weibo">微博</string>
+    <string name="story_select">故事集选集</string>
 </resources>
